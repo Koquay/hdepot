@@ -1,0 +1,43 @@
+.primary-color {
+    color: #fa6302;
+}
+
+.primary-bg-color {
+    background: #fa6302;
+}
+
+a {
+    text-decoration: none;
+    color: var(--bs-secondary-color);
+}
+
+.strike-through {
+  text-decoration: line-through;
+}
+
+.primary-button {
+    background: #fa6302 !important;
+    border-color: #fa6302 !important;
+    border-radius: 0 !important;
+    
+    &:hover {
+      opacity: 0.8 !important;
+    }
+}
+
+
+.secondary-button {
+    color: #fa6302 !important;
+    background: white !important;
+    border-color: #fa6302 !important;
+    outline-color: #fa6302 !important;
+    border-radius: 0 !important;
+    
+    &:hover {
+      background-color: #fa6302 !important;
+        color: white !important;
+    }
+}
+
+
+

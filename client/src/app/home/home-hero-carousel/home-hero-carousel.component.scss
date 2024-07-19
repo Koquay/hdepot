@@ -1,0 +1,36 @@
+#section-1 {
+    .nav-link {
+        color: var(--bs-secondary-color);
+        
+        font-size: 1.1rem;
+    }
+    
+    .nav-item {
+        &:hover {
+            font-weight: bold;
+            
+            border-bottom: 3px solid #fa6302 ;
+
+        }
+        
+        
+    }
+    
+    .call-to-action {
+        color: var(--bs-secondary-color);
+        
+        text-decoration: none;
+        
+         border-bottom: 1px solid black;
+                
+    }
+}
+
+#section-9 {
+    .popular-categories-col {
+        &:hover {
+            background: #3b82f680;
+            font-weight: bold;
+        }
+    }
+}

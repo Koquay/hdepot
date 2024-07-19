@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: Roboto, sans-serif !important;
+}
+
+.primary-color {
+    color: #fa6302 !important;
+}
+
+.primary-bg-color {
+    background: #fa6302 !important;
+}
+
+a {
+    text-decoration: none !important;
+    color: var(--bs-secondary-color) !important;
+}
+
+.strike-through {
+  text-decoration: line-through !important;
+}
+
+.primary-button {
+    background: #fa6302 !important;
+    border-color: #fa6302 !important;
+    border-radius: 0 !important;
+    
+    &:hover {
+      opacity: 0.8 !important;
+    }
+}
+
+
+.secondary-button {
+    color: #fa6302 !important;
+    background: white !important;
+    border-color: #fa6302 !important;
+    outline-color: #fa6302 !important;
+    border-radius: 0 !important;
+    
+    &:hover {
+      background-color: #fa6302 !important;
+        color: white !important;
+    }
+}
+
+
+

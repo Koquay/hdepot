@@ -1,0 +1,35 @@
+<div class="wrapper">
+    <owl-carousel-o [options]="customOptions">
+        <ng-container>
+            <ng-template *ngFor="let product of topPickProducts" class="slide" carouselSlide>
+                <div class="card p-2 d-flex justify-content-center align-items-center">
+                    <img class="card-img-top d-block" src="assets/img/{{ product.images[0] }}"
+                        style="width: 150px; height: 200px" />
+                    <div class="card-body justify-content-start">
+                        <div><a href="#">
+                                <small class="me-2" style="font-weight: bold;">{{product.brand}}</small>
+                                <small>{{product.description | shortenAddEllipsis}}</small></a>
+
+                            <div [appRating]="product.rating">
+                                <span></span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span class="d-inline-block me-2"
+                                    style="font-weight: bold;font-size: 22px;">
+                                    <strong>
+                                        {{product.price | discountPrice:product.discount}}
+                                    </strong>
+                                </span>
+                                <span
+                                    class="d-inline-block strike-through"
+                                    style="font-size: 14px;">
+                                    {{product.price | currency}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </ng-container>
+    </owl-carousel-o>
+</div>

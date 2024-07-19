@@ -1,0 +1,19 @@
+{
+  
+  "_id": {
+    "$oid": "66995d3e03d1e8cad0531df6"
+  },
+  "brand": "Whirlpool",
+  "description": "4.7 - 4.8 cu. ft. Top Load Washer with 2 in 1 Removable Agitator in White",
+  "images": [
+    "Screenshot 16.png",
+    "Screenshot 17.png"
+  ],
+  "price": 698,
+  "discount": 10,
+  "color": "white",
+  "rating": 5,
+  "topPick": true,
+  "type": "dryer",
+  "category": "appliances"
+}

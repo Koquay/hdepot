@@ -1,0 +1,67 @@
+<section id="section-1" class="mt-5">
+    <h2 style="font-family: Roboto, sans-serif;font-weight: 700;">Top Savings for You </h2>
+    <div class="mt-4">
+        <ul class="nav nav-tabs d-md-flex justify-content-md-center" role="tablist">
+            <li *ngFor="let tab of topPickTabs" class="nav-item" role="presentation">
+                <a class="nav-link" role="tab" data-bs-toggle="tab" (click)="setTopPickType(tab.type)" href="{{tab.href}}"
+                    [ngClass]="{
+                    'active': tab.active === true,
+                    '': tab.active === false,
+                    
+                  }">
+                    {{tab.type}}
+                </a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active mt-3" role="tabpanel" id="tab-1" style="border: 1px solid var(--bs-gray-400) ;">
+                <!-- <div class="wrapper">
+                    <owl-carousel-o [options]="customOptions">
+                        <ng-container>
+                            <ng-template *ngFor="let product of topPickProducts" class="slide" carouselSlide>
+                                <div class="card p-2 d-flex justify-content-center align-items-center">
+                                    <img class="card-img-top d-block" src="assets/img/{{ product.images[0] }}"
+                                        style="width: 150px; height: 200px" />
+                                    <div class="card-body justify-content-start">
+                                        <div><a href="#">
+                                                <small class="me-2" style="font-weight: bold;">{{product.brand}}</small>
+                                                <small>{{product.description | shortenAddEllipsis}}</small></a>
+
+                                            <div [appRating]="product.rating">
+                                                <span></span>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <span class="d-inline-block me-2"
+                                                    style="font-weight: bold;font-size: 22px;">
+                                                    <strong>
+                                                        {{product.price | discountPrice:product.discount}}
+                                                    </strong>
+                                                </span>
+                                                <span
+                                                    class="d-inline-block strike-through"
+                                                    style="font-size: 14px;">
+                                                    {{product.price | currency}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ng-container>
+                    </owl-carousel-o>
+                </div> -->
+
+                <app-top-pick-data [topPickType]="topPickType"></app-top-pick-data>
+            </div>
+            <!-- <div class="tab-pane" role="tabpanel" id="tab-2"> -->
+                <div class="tab-pane  mt-3" role="tabpanel" id="tab-2" style="border: 1px solid var(--bs-gray-400) ;">
+                <app-top-pick-data [topPickType]="topPickType"></app-top-pick-data>
+            </div>
+            <div class="tab-pane" role="tabpanel" id="tab-3">
+                 <app-top-pick-data [topPickType]="topPickType"></app-top-pick-data>
+            </div>
+
+        </div>
+    </div>
+</section>
