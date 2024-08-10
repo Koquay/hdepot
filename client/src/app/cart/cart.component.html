@@ -1,0 +1,83 @@
+
+<div class="container">
+    <section>
+        <div class="row">
+            <div class="col col-12 col-md-8">
+                <div *ngFor="let item of cart" 
+                    class="row d-flex justify-content-between mb-4">
+                    <div class="col d-flex d-sm-flex justify-content-center justify-content-sm-center align-items-sm-center col-12 col-md-2 mb-4"><img class="img-fluid" src="assets/img/Screenshot%202.png" style="width: 85.7px;"></div>
+                    <div class="col col-12 col-md-6 mb-4">
+                        <section class="mb-2">
+                            <h6 class="fw-bold">{{item.brand}}</h6>
+                            <p>{{item.description}}</p>
+                        </section>
+                        <section class="mt-2 mb-2">
+                            <p class="mb-0"  *ngIf="item.size">
+                                <small class="me-2">Total Capacity (cu. ft.): </small>
+                                <small class="fw-bold">{{item.size}}</small>
+                            </p>
+                            <p class="mb-0" *ngIf="item.color">
+                                <small class="me-2">Color/Finish: </small>
+                                <small class="fw-bold">{{item.color}}</small>
+                            </p>
+                            <p class="mb-1" *ngIf="item.product.installationDepth">
+                                <small class="me-2">Installation Depth: </small>
+                                <small class="fw-bold">{{item.product.installationDepth}}</small>
+                            </p>
+                            <p class="mb-1"  *ngIf="item.product.handleType">
+                                <small class="me-2">Handle Type:</small>
+                                <small class="fw-bold">{{item.product.handleType}}</small>
+                            </p>
+                        </section>
+                    </div>
+                    <div class="col col-12 col-md-2">
+                        <h6 class="fw-bold mb-1">{{item.product.price |  discountPrice:item.product.discount}}</h6>
+                        <small><span style="text-decoration: line-through;">{{item.product.price | currency}}</span></small>
+                        <small class="d-block"><span style="color: rgb(0, 128, 0);">Save {{item.product.discount}}%</span></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-12 col-md-4">
+                <div class="row">
+                    <div class="col col-12 px-4 px-md-5 py-4" style="border: 2px solid var(--bs-border-color-translucent) ;">
+                        <h4>Your Order</h4>
+                        <hr>
+                        <p class="d-flex justify-content-between">
+                            <small class="fw-bold">Subtotal</small>
+                            <small class="fw-bold"><strong>{{getSubtotal() | currency}}</strong>
+                            </small>
+                        </p>
+                        <p class="d-flex justify-content-between color-green">
+                            <small>Savings</small>
+                            <small>{{getDiscount() | currency}}</small>
+                        </p>
+                        <p class="d-flex justify-content-between"><small>Appliance Delivery</small>
+                            <small>{{APPLIANCE_DELIVERY | currency}}</small>
+                        </p>
+                        <p class="d-flex justify-content-between">
+                            <small>Sales Tax (determined in later step)</small>
+                            <small>...</small>
+                        </p>
+                        <hr>
+                        <p class="d-flex justify-content-between" style="font-size: 21px;">
+                            <span class="fw-bold">Total</span>
+                            <span class="fw-bold">
+                                <strong>{{getTotal() | currency}}</strong>
+                            </span>
+                        </p>
+                        <section class="mt-5">
+                            <button 
+                                [routerLink]="['/checkout']"
+                                class="btn btn-primary w-100 primary-button" type="button" 
+                                style="font-size: 20px;font-weight: bold;">Checkout                                
+                            </button>
+                        </section>
+                        <p class="mt-2 mb-0" style="text-align: center;">Or</p>
+                        <section>
+                            <button class="btn btn-primary w-100 paypal-bg" type="button" style="font-size: 20px;font-weight: bold;"><span class="paypal-dark-blue" style="font-style: italic;">Pay</span><span class="paypal-light-blue" style="font-style: italic;">Pal</span></button></section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

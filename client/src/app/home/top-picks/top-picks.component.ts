@@ -54,7 +54,7 @@ export class TopPicksComponent {
   ){}
 
   ngOnInit() {
-    // this.getTopPicks('All')
+    this.topPickType = 'All'
     this.subscribeToReduxStores();    
   }
 
@@ -64,25 +64,11 @@ export class TopPicksComponent {
     });
 
     homeReducers$.subscribe((homeReducers:any) => {
-      console.log('homeReducers', homeReducers)
+      // console.log('homeReducers', homeReducers)
       this.topPickTabs = homeReducers.topPickTabs;
       console.log('topPickTabs', this.topPickTabs)
     });
-
-    // const productReducers$ = this.store.select((state) => {
-    //   return state.productReducers;
-    // });
-
-    // productReducers$.subscribe((productReducers:any) => {
-    //   console.log('productReducers', productReducers)
-    //   this.topPickProducts = productReducers.topPickProducts;
-    //   console.log('topPickProducts', this.topPickProducts)
-    // });
   }
-
-  // public getTopPicks = (name:string) => {
-  //   this.productService.getTopPicks(name);
-  // }
 
   public setTopPickType = (type:string) => {
     this.topPickType = type;

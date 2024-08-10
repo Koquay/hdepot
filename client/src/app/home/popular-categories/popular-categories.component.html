@@ -1,0 +1,14 @@
+<section id="section-9" class="mt-5">
+    <h2 style="font-family: Roboto, sans-serif;font-weight: 700;">{{popularCategories.heading}}</h2>
+    <div class="row mt-2">
+        <div class="col">
+            <div class="row d-xl-flex justify-content-xl-center">
+                <div *ngFor="let category of popularCategories.items"
+                    class="col d-sm-flex flex-row justify-content-lg-center align-items-lg-center col-2 m-2 popular-categories-col py-2" 
+                    style="border-radius: 50px;border: 1px solid var(--bs-gray) ;">
+                    <a href="#">{{category.name}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

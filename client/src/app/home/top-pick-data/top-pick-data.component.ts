@@ -6,6 +6,7 @@ import { ShortenAddEllipsisPipe } from '../../shared/pipes/shorten-add-ellipsis.
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { Store } from '@ngrx/store';
 import { ProductService } from '../../product/product.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-top-pick-data',
@@ -15,7 +16,8 @@ import { ProductService } from '../../product/product.service';
     CarouselModule,
     ShortenAddEllipsisPipe,
     DiscountPricePipe,
-    RatingDirective
+    RatingDirective,
+    RouterModule
 
   ],
   templateUrl: './top-pick-data.component.html',
@@ -24,7 +26,6 @@ import { ProductService } from '../../product/product.service';
 export class TopPickDataComponent {
   @Input() 
   set topPickType(topPickType: string) {
-    console.log('topPickType', topPickType)
     this.getTopPicks(topPickType)
   }
 
@@ -57,7 +58,6 @@ export class TopPickDataComponent {
   ){}
 
   ngOnInit() {
-    this.getTopPicks('All')
     this.subscribeToReduxStores();    
   }
 
@@ -68,9 +68,7 @@ export class TopPickDataComponent {
     });
 
     productReducers$.subscribe((productReducers:any) => {
-      console.log('productReducers', productReducers)
       this.topPickProducts = productReducers.topPickProducts;
-      console.log('topPickProducts', this.topPickProducts)
     });
   }
 

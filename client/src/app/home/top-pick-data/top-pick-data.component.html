@@ -4,9 +4,11 @@
             <ng-template *ngFor="let product of topPickProducts" class="slide" carouselSlide>
                 <div class="card p-2 d-flex justify-content-center align-items-center">
                     <img class="card-img-top d-block" src="assets/img/{{ product.images[0] }}"
+                        [routerLink]="['/selectedProduct', product._id]"
                         style="width: 150px; height: 200px" />
                     <div class="card-body justify-content-start">
-                        <div><a href="#">
+                        <div>
+                            <a href="#">
                                 <small class="me-2" style="font-weight: bold;">{{product.brand}}</small>
                                 <small>{{product.description | shortenAddEllipsis}}</small></a>
 

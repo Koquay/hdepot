@@ -1,19 +1,37 @@
+
 {
-  
   "_id": {
-    "$oid": "66995d3e03d1e8cad0531df6"
+    "$oid": "66ae50e4d2a1ba6feaf04edf"
   },
-  "brand": "Whirlpool",
-  "description": "4.7 - 4.8 cu. ft. Top Load Washer with 2 in 1 Removable Agitator in White",
+  "brand": "GE",
+  "description": "27 cu. ft. French Door Refrigerator in Fingerprint Resistant Stainless with Internal Dispenser, ENERGY STAR",
   "images": [
-    "Screenshot 16.png",
-    "Screenshot 17.png"
+    "Screenshot 2.2.png",
+    "Screenshot 2.3.png"
   ],
-  "price": 698,
+  "price": 2358,
   "discount": 10,
-  "color": "white",
+  "size": "27cu ft",
   "rating": 5,
   "topPick": true,
-  "type": "dryer",
-  "category": "appliances"
+  "type": "refrigerators",
+  "category": "appliances",
+  "features": [
+    "Resists fingerprints and smudges for a clean sleek appearance",
+    "32 3/4 in. french door refrigerator with LED lighting",
+    "Advanced water filtration (uses XWFE filter)"
+  ],
+  "color-finish": [
+    {
+      "productId": "669156474fa82c6f24d554a0",
+      "color": "Fingerprint Resistant Stainless Steel",
+      "img": "Screenshot%20from%202024-07-26%2013-21-48.png"
+    },
+    {
+      "productId": "66ae50e4d2a1ba6feaf04edf",
+      "color": "Fingerprint Resistant Slate",
+      "img": "Screenshot%20from%202024-07-26%2013-22-50.png"
+    }
+  ]
+
 }

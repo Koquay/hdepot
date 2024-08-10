@@ -1,0 +1,21 @@
+<section id="section-7" class="mt-5">
+    <h2 style="font-family: Roboto, sans-serif;font-weight: 700;">{{categories.heading}}</h2>
+    <div class="row mt-2">
+        <div class="col">
+            <div class="row">
+                <div *ngFor="let category of categories.items"
+                    class="col d-sm-flex flex-row justify-content-lg-center align-items-lg-center col-12 col-md-3 my-2 p-2" 
+                    style="border: 1px solid var(--bs-gray-400) ;">
+                    <a class="d-lg-flex align-items-lg-center" href="#">
+                        <i 
+                            class="me-2 " 
+                            [ngClass]="category.icon"
+                            style="font-size: 30px;">
+                        </i>
+                        <small style="width: 180px;">{{category.name}}</small>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
