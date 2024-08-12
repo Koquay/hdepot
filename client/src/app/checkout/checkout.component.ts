@@ -2,8 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { OrderTotalComponent } from '../order/order-total/order-total.component';
 import { OrderSummaryComponent } from '../order/order-summary/order-summary.component';
+import { storeCheckoutData } from './checkout.actions';
+import { CheckoutService } from './checkout.service';
 
 @Component({
   selector: 'app-checkout',
@@ -11,7 +12,6 @@ import { OrderSummaryComponent } from '../order/order-summary/order-summary.comp
   imports: [
     FormsModule,
     CommonModule,
-    OrderTotalComponent,
     OrderSummaryComponent
   ],
   templateUrl: './checkout.component.html',
@@ -25,7 +25,8 @@ export class CheckoutComponent {
   public expirationYears;
 
   constructor(
-    private store:Store<{cartReducers, checkoutReducers}>
+    private store:Store<{cartReducers, checkoutReducers}>,
+    private checkoutService:CheckoutService
   ){}
 
   ngOnInit() {    
@@ -59,5 +60,24 @@ export class CheckoutComponent {
 
   public saveToDataStore = () => {
     console.log('CheckoutComponent.checkoutData', this.checkoutData)
+
+    this.store.dispatch(storeCheckoutData({checkoutData: this.checkoutData}))
+  }
+
+  public placeOrder = () => {    
+    const items = [];
+
+    for(let item of this.cart) {
+      items.push ({
+        product: {
+          _id: item.product._id,
+          quantity: item.quantiyy,
+          color: item.color,
+          size: item.size
+        }
+      })
+    }
+    this.checkoutData.items = items;
+    this.checkoutService.placeOrder(this.checkoutData)
   }
 }

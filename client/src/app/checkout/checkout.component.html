@@ -19,8 +19,7 @@
                                             <label class="form-label">First Name</label>
                                             <input class="form-control fw-bold" type="text"
                                                 [(ngModel)]="checkoutData.deliveryAddress.firstName" required
-                                                #firstName="ngModel"
-                                                (change)="saveToDataStore()">
+                                                #firstName="ngModel" (change)="saveToDataStore()">
 
                                             <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
                                                 class="alert">
@@ -34,8 +33,7 @@
                                             <label class="form-label">Last Name</label>
                                             <input class="form-control fw-bold" type="text"
                                                 [(ngModel)]="checkoutData.deliveryAddress.lastName" required
-                                                #lastName="ngModel"
-                                                (change)="saveToDataStore()">
+                                                #lastName="ngModel" (change)="saveToDataStore()">
 
                                             <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
                                                 class="alert">
@@ -50,11 +48,9 @@
                                             <label class="form-label">Phone Number</label>
                                             <input class="form-control fw-bold" type="phone"
                                                 [(ngModel)]="checkoutData.deliveryAddress.phone" required
-                                                #phone="ngModel"
-                                                (change)="saveToDataStore()">
+                                                #phone="ngModel" (change)="saveToDataStore()">
 
-                                            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
-                                                class="alert">
+                                            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert">
                                                 <div *ngIf="phone.hasError('required')">
                                                     <small>Phone is required.</small>
                                                 </div>
@@ -66,8 +62,7 @@
                                             <label class="form-label">Delivery Address</label>
                                             <input class="form-control fw-bold" type="text"
                                                 [(ngModel)]="checkoutData.deliveryAddress.address1" required
-                                                #address1="ngModel"
-                                                (change)="saveToDataStore()">
+                                                #address1="ngModel" (change)="saveToDataStore()">
 
                                             <div *ngIf="address1.invalid && (address1.dirty || address1.touched)"
                                                 class="alert">
@@ -121,8 +116,7 @@
                                             <h6>Select Delivery Date</h6>
                                             <input class="form-control fw-bold mb-2" type="date" required
                                                 [(ngModel)]="checkoutData.applianceDelivery.deliveryDate"
-                                                #deliveryDate="ngModel"
-                                                (change)="saveToDataStore()">
+                                                #deliveryDate="ngModel" (change)="saveToDataStore()">
 
                                             <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
                                                 class="alert">
@@ -156,25 +150,18 @@
                                     <div class="row mb-4">
                                         <div class="col">
                                             <div class="form-check">
-                                                <input 
-                                                    class="form-check-input" 
-                                                    type="radio" 
-                                                    id="formCheck-2"
-                                                    name="paymentMethod"
-                                                    value="PayPal"
+                                                <input class="form-check-input" type="radio" id="formCheck-2"
+                                                    name="paymentMethod" value="PayPal"
                                                     [(ngModel)]="checkoutData.paymentMethod.paymentType"
-                                                    (change)="saveToDataStore()"
-                                                >
+                                                    (change)="saveToDataStore()">
                                                 <label class="form-check-label" for="formCheck-2"
                                                     style="font-style: italic;">PayPal</label>
                                             </div>
                                             <div cl ass="form-check">
                                                 <input class="form-check-input" type="radio" id="formCheck-3"
-                                                    name="paymentMethod"
-                                                    value="Credit Card"
+                                                    name="paymentMethod" value="Credit Card"
                                                     [(ngModel)]="checkoutData.paymentMethod.paymentType"
-                                                    (change)="saveToDataStore()"
-                                                    >
+                                                    (change)="saveToDataStore()">
                                                 <label class="form-check-label" for="formCheck-3">Credit Card</label>
                                             </div>
                                         </div>
@@ -183,36 +170,30 @@
                                         <div class="col">
                                             <div class="input-group">
                                                 <span class="input-group-text ps-0">
-                                                    <i class="fa fa-credit-card-alt"
-                                                        style="font-size: 25px;"></i>
+                                                    <i class="fa fa-credit-card-alt" style="font-size: 25px;"></i>
                                                 </span>
                                                 <input class="form-control fw-bold" type="text" required
                                                     [(ngModel)]="checkoutData.paymentMethod.cardNumber"
-                                                    #cardNumber="ngModel"
-                                                    (change)="saveToDataStore()"
-                                                    placeholder="Enter credit card number">                                                
-                                                <button
-                                                    class="btn btn-primary d-none" type="button">Button</button>
+                                                    #cardNumber="ngModel" (change)="saveToDataStore()"
+                                                    placeholder="Enter credit card number">
+                                                <button class="btn btn-primary d-none" type="button">Button</button>
                                             </div>
                                             <div *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)"
-                                                    class="alert">
-                                                    <div *ngIf="cardNumber.hasError('required')">
-                                                        <small>Card Number is required.</small>
-                                                    </div>
+                                                class="alert">
+                                                <div *ngIf="cardNumber.hasError('required')">
+                                                    <small>Card Number is required.</small>
                                                 </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row mb-4">
                                         <div class="col col-12 col-lg-4">
                                             <small>Expiration Month</small>
-                                            <select class="form-select fw-bold" 
-                                                [(ngModel)]="checkoutData.paymentMethod.expMonth"   
-                                                #expMonth="ngModel"                                             
-                                                (change)="saveToDataStore()"
-                                            >   
+                                            <select class="form-select fw-bold"
+                                                [(ngModel)]="checkoutData.paymentMethod.expMonth" #expMonth="ngModel"
+                                                (change)="saveToDataStore()">
                                                 <optgroup label="Month">
-                                                    <option *ngFor="let expMonth of expirationMonths"
-                                                    >  {{expMonth}}
+                                                    <option *ngFor="let expMonth of expirationMonths"> {{expMonth}}
                                                     </option>
                                                 </optgroup>
                                             </select>
@@ -227,10 +208,8 @@
                                         <div class="col col-12 col-lg-4">
                                             <small>Expiration Year</small>
                                             <select class="form-select fw-bold" readonly=""
-                                                [(ngModel)]="checkoutData.paymentMethod.expYear" 
-                                                #expYear="ngModel"
-                                                (change)="saveToDataStore()"
-                                            >
+                                                [(ngModel)]="checkoutData.paymentMethod.expYear" #expYear="ngModel"
+                                                (change)="saveToDataStore()">
                                                 <optgroup label="Year">
                                                     <option *ngFor="let expYear of expirationYears">
                                                         {{expYear}}
@@ -249,25 +228,19 @@
                                             <small>CVV (on back)</small>
                                             <div class="input-group">
                                                 <span class="input-group-text ps-0">
-                                                    <i class="fa fa-credit-card-alt"
-                                                        style="font-size: 25px;"></i>
+                                                    <i class="fa fa-credit-card-alt" style="font-size: 25px;"></i>
                                                 </span>
-                                                <input class="form-control fw-bold" type="text"
-                                                    maxlength="3"
-                                                    [(ngModel)]="checkoutData.paymentMethod.CVV"
-                                                    #CVV="ngModel"
-                                                    (change)="saveToDataStore()"
-                                                    placeholder="Enter CVV">                                                
+                                                <input class="form-control fw-bold" type="text" maxlength="3"
+                                                    [(ngModel)]="checkoutData.paymentMethod.CVV" #CVV="ngModel"
+                                                    (change)="saveToDataStore()" placeholder="Enter CVV">
 
-                                                <button class="btn btn-primary d-none"
-                                                    type="button">Button</button>
+                                                <button class="btn btn-primary d-none" type="button">Button</button>
                                             </div>
-                                            <div *ngIf="CVV.invalid && (CVV.dirty || CVV.touched)"
-                                                    class="alert">
-                                                    <div *ngIf="CVV.hasError('required')">
-                                                        <small>CVV is required.</small>
-                                                    </div>
+                                            <div *ngIf="CVV.invalid && (CVV.dirty || CVV.touched)" class="alert">
+                                                <div *ngIf="CVV.hasError('required')">
+                                                    <small>CVV is required.</small>
                                                 </div>
+                                            </div>
                                         </div>
                                         <div class="col col-12 mt-4">
                                             <div class="form-check">
@@ -290,9 +263,9 @@
 
                     <section class="mt-5">
                         <button class="btn btn-primary w-100 primary-button" 
-                            [disabled]="!checkoutForm.form.valid" 
-                            type="button"
-                            style="font-size: 20px;font-weight: bold;">Place Order</button>
+                            (click)="placeOrder()"
+                            [disabled]="!checkoutForm.form.valid"
+                            type="button" style="font-size: 20px;font-weight: bold;">Place Order</button>
                     </section>
                 </div>
             </div>

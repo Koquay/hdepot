@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { DiscountPricePipe } from '../shared/pipes/discount-price';
 import { RouterLink } from '@angular/router';
-import { OrderTotalComponent } from '../order/order-total/order-total.component';
 import { OrderSummaryComponent } from '../order/order-summary/order-summary.component';
 
 @Component({
@@ -13,7 +12,6 @@ import { OrderSummaryComponent } from '../order/order-summary/order-summary.comp
     CommonModule,
     DiscountPricePipe,
     RouterLink,
-    OrderTotalComponent,
     OrderSummaryComponent
 
 
