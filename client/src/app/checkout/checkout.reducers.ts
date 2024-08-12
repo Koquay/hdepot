@@ -21,7 +21,7 @@ const initialState = {
             expMonth: null,
             expYear: null,
             CVV: null,
-            defaultCard: false,
+            defaultCreditCard: null,
         }
     },
 

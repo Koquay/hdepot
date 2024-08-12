@@ -1,28 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { DiscountPricePipe } from '../shared/pipes/discount-price';
 import { RouterLink } from '@angular/router';
-import { OrderTotalComponent } from '../order/order-total/order-total.component';
-import { OrderSummaryComponent } from '../order/order-summary/order-summary.component';
+import { Store } from '@ngrx/store';
 
 @Component({
-  selector: 'app-cart',
+  selector: 'app-order-summary',
   standalone: true,
   imports: [
     CommonModule,
-    DiscountPricePipe,
-    RouterLink,
-    OrderTotalComponent,
-    OrderSummaryComponent
-
-
-
+    RouterLink
   ],
-  templateUrl: './cart.component.html',
-  styleUrl: './cart.component.scss'
+  templateUrl: './order-summary.component.html',
+  styleUrl: './order-summary.component.scss'
 })
-export class CartComponent {
+export class OrderSummaryComponent {
   public cart;
   public APPLIANCE_DELIVERY = 29.99;
 

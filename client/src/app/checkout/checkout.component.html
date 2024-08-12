@@ -1,5 +1,5 @@
 <div class="container">
-    <form>
+    <form #checkoutForm="ngForm">
         <section>
             <div class="row">
                 <div class="col col-12 col-lg-8">
@@ -19,13 +19,30 @@
                                             <label class="form-label">First Name</label>
                                             <input class="form-control fw-bold" type="text"
                                                 [(ngModel)]="checkoutData.deliveryAddress.firstName" required
+                                                #firstName="ngModel"
                                                 (change)="saveToDataStore()">
+
+                                            <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+                                                class="alert">
+                                                <div *ngIf="firstName.hasError('required')">
+                                                    <small>First Name is required.</small>
+                                                </div>
+                                            </div>
                                         </div>
+
                                         <div class="col">
                                             <label class="form-label">Last Name</label>
                                             <input class="form-control fw-bold" type="text"
                                                 [(ngModel)]="checkoutData.deliveryAddress.lastName" required
+                                                #lastName="ngModel"
                                                 (change)="saveToDataStore()">
+
+                                            <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+                                                class="alert">
+                                                <div *ngIf="lastName.hasError('required')">
+                                                    <small>Last Name is required.</small>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row mb-4">
@@ -33,7 +50,15 @@
                                             <label class="form-label">Phone Number</label>
                                             <input class="form-control fw-bold" type="phone"
                                                 [(ngModel)]="checkoutData.deliveryAddress.phone" required
+                                                #phone="ngModel"
                                                 (change)="saveToDataStore()">
+
+                                            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+                                                class="alert">
+                                                <div *ngIf="phone.hasError('required')">
+                                                    <small>Phone is required.</small>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row mb-4">
@@ -41,7 +66,15 @@
                                             <label class="form-label">Delivery Address</label>
                                             <input class="form-control fw-bold" type="text"
                                                 [(ngModel)]="checkoutData.deliveryAddress.address1" required
+                                                #address1="ngModel"
                                                 (change)="saveToDataStore()">
+
+                                            <div *ngIf="address1.invalid && (address1.dirty || address1.touched)"
+                                                class="alert">
+                                                <div *ngIf="address1.hasError('required')">
+                                                    <small>Delivery Address is required.</small>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row mb-4">
@@ -88,7 +121,15 @@
                                             <h6>Select Delivery Date</h6>
                                             <input class="form-control fw-bold mb-2" type="date" required
                                                 [(ngModel)]="checkoutData.applianceDelivery.deliveryDate"
+                                                #deliveryDate="ngModel"
                                                 (change)="saveToDataStore()">
+
+                                            <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+                                                class="alert">
+                                                <div *ngIf="lastName.hasError('required')">
+                                                    <small>Delivery Date is required.</small>
+                                                </div>
+                                            </div>
                                             <small class="fw-normal" style="font-size: 14.3px;">We'll call or text (617)
                                                 567-7112 with your projected 4-hour delivery window one business day
                                                 before your scheduled delivery date. You may also receive an optional
@@ -140,7 +181,6 @@
                                     </div>
                                     <div class="row mb-4">
                                         <div class="col">
-                                            <!-- <input class="form-control fw-bold" type="text"> -->
                                             <div class="input-group">
                                                 <span class="input-group-text ps-0">
                                                     <i class="fa fa-credit-card-alt"
@@ -148,31 +188,47 @@
                                                 </span>
                                                 <input class="form-control fw-bold" type="text" required
                                                     [(ngModel)]="checkoutData.paymentMethod.cardNumber"
+                                                    #cardNumber="ngModel"
                                                     (change)="saveToDataStore()"
-                                                    placeholder="Enter credit card number">
+                                                    placeholder="Enter credit card number">                                                
                                                 <button
                                                     class="btn btn-primary d-none" type="button">Button</button>
                                             </div>
+                                            <div *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)"
+                                                    class="alert">
+                                                    <div *ngIf="cardNumber.hasError('required')">
+                                                        <small>Card Number is required.</small>
+                                                    </div>
+                                                </div>
                                         </div>
                                     </div>
                                     <div class="row mb-4">
-                                        <div class="col col-12 col-lg-4"><small>Expiration</small>
-                                            <select class="form-select" 
-                                                [(ngModel)]="checkoutData.paymentMethod.expMonth"                                                
+                                        <div class="col col-12 col-lg-4">
+                                            <small>Expiration Month</small>
+                                            <select class="form-select fw-bold" 
+                                                [(ngModel)]="checkoutData.paymentMethod.expMonth"   
+                                                #expMonth="ngModel"                                             
                                                 (change)="saveToDataStore()"
                                             >   
                                                 <optgroup label="Month">
                                                     <option *ngFor="let expMonth of expirationMonths"
-                                                    >
-                                                        {{expMonth}}
+                                                    >  {{expMonth}}
                                                     </option>
                                                 </optgroup>
                                             </select>
+
+                                            <div *ngIf="expMonth.invalid && (expMonth.dirty || expMonth.touched)"
+                                                class="alert">
+                                                <div *ngIf="expMonth.hasError('required')">
+                                                    <small>Expiration Month is required.</small>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col col-12 col-lg-4">
-                                            <small>&nbsp;&nbsp;</small>
-                                            <select class="form-select" readonly=""
+                                            <small>Expiration Year</small>
+                                            <select class="form-select fw-bold" readonly=""
                                                 [(ngModel)]="checkoutData.paymentMethod.expYear" 
+                                                #expYear="ngModel"
                                                 (change)="saveToDataStore()"
                                             >
                                                 <optgroup label="Year">
@@ -180,7 +236,15 @@
                                                         {{expYear}}
                                                     </option>
                                                 </optgroup>
-                                            </select></div>
+                                            </select>
+
+                                            <div *ngIf="expYear.invalid && (expYear.dirty || expYear.touched)"
+                                                class="alert">
+                                                <div *ngIf="expYear.hasError('required')">
+                                                    <small>Expiration Year is required.</small>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col col-12 col-lg-4">
                                             <small>CVV (on back)</small>
                                             <div class="input-group">
@@ -191,15 +255,26 @@
                                                 <input class="form-control fw-bold" type="text"
                                                     maxlength="3"
                                                     [(ngModel)]="checkoutData.paymentMethod.CVV"
+                                                    #CVV="ngModel"
                                                     (change)="saveToDataStore()"
-                                                    placeholder="Enter CVV">
+                                                    placeholder="Enter CVV">                                                
+
                                                 <button class="btn btn-primary d-none"
                                                     type="button">Button</button>
                                             </div>
+                                            <div *ngIf="CVV.invalid && (CVV.dirty || CVV.touched)"
+                                                    class="alert">
+                                                    <div *ngIf="CVV.hasError('required')">
+                                                        <small>CVV is required.</small>
+                                                    </div>
+                                                </div>
                                         </div>
                                         <div class="col col-12 mt-4">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" id="formCheck-4">
+                                                <input class="form-check-input" type="checkbox" id="formCheck-1"
+                                                    [(ngModel)]="checkoutData.paymentMethod.defaultCreditCard"
+                                                    (change)="saveToDataStore()">
                                                 <label class="form-check-label" for="formCheck-4"
                                                     style="font-size: 13px;">Save as my default credit card</label>
                                             </div>
@@ -211,27 +286,14 @@
                     </div>
                 </div>
                 <div class="col col-12 col-md-4">
-                    <div class="row">
-                        <div class="col col-12 px-4 px-md-5 py-4"
-                            style="border: 2px solid var(--bs-border-color-translucent) ;">
-                            <h4>Your Order</h4>
-                            <hr>
-                            <p class="d-flex justify-content-between"><span class="fw-bold">Subtotal</span><span
-                                    class="fw-bold"><strong>$2,711.98</strong></span></p>
-                            <p class="d-flex justify-content-between color-green">
-                                <span>Savings</span><span>$200.00</span></p>
-                            <p class="d-flex justify-content-between"><span>Appliance Delivery</span><span>$29.00</span>
-                            </p>
-                            <p class="d-flex justify-content-between"><span>Sales Tax (determined in later
-                                    step)</span><span>...</span></p>
-                            <hr>
-                            <p class="d-flex justify-content-between" style="font-size: 21px;"><span
-                                    class="fw-bold">Total</span><span class="fw-bold"><strong>$2,711.98</strong></span>
-                            </p>
-                            <section class="mt-5"><button class="btn btn-primary w-100 primary-button" type="button"
-                                    style="font-size: 20px;font-weight: bold;">Place Order</button></section>
-                        </div>
-                    </div>
+                    <app-order-summary></app-order-summary>
+
+                    <section class="mt-5">
+                        <button class="btn btn-primary w-100 primary-button" 
+                            [disabled]="!checkoutForm.form.valid" 
+                            type="button"
+                            style="font-size: 20px;font-weight: bold;">Place Order</button>
+                    </section>
                 </div>
             </div>
         </section>

@@ -2,13 +2,17 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { OrderTotalComponent } from '../order/order-total/order-total.component';
+import { OrderSummaryComponent } from '../order/order-summary/order-summary.component';
 
 @Component({
   selector: 'app-checkout',
   standalone: true,
   imports: [
     FormsModule,
-    CommonModule
+    CommonModule,
+    OrderTotalComponent,
+    OrderSummaryComponent
   ],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.scss'
