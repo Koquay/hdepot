@@ -76,26 +76,26 @@ export class Checkout2Component {
 
   private initCheckoutForm = () => {
     this.checkoutForm = new FormGroup({
-      // deliveryAddress: new FormGroup({ 
+      deliveryAddress: new FormGroup({ 
         firstName: new FormControl(''),
         lastName: new FormControl(''),
         phone: new FormControl(''),
         address1: new FormControl(''),
         address2: new FormControl(''),
         useAsBillingAddress: new FormControl(''),
-      // }),
-      // applianceDelivery: new FormGroup({ 
+      }),
+      applianceDelivery: new FormGroup({ 
           deliveryDate: new FormControl(''),
           specialInstructions: new FormControl(''),
-      // }),
-      // paymentMethod: new FormGroup({ 
+      }),
+      paymentMethod: new FormGroup({ 
           paymentType: new FormControl(''),
           cardNumber: new FormControl(''),
           expMonth: new FormControl(''),
           expYear: new FormControl(''),
           CVV: new FormControl(''),
           defaultCreditCard: new FormControl(''),
-      // })
+      })
     });
 
     console.log('this.checkoutForm', this.checkoutForm.value);
@@ -132,7 +132,10 @@ export class Checkout2Component {
         }
       )
     }
+
+    this.checkoutData = {...this.checkoutForm}
     this.checkoutData.items = items;
+    console.log('CheckoutComponent.checkoutData 2', this.checkoutData)
     this.checkoutService.placeOrder(this.checkoutData)
   }
 }
