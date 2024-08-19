@@ -1,28 +1,30 @@
 import { createReducer, on } from "@ngrx/store";
 import { storeCheckoutData } from "./checkout.actions";
+import { saveStateToLocalStorage } from "../shared/utils/localStorageUtils";
+import { restoreStateFromLocalStorage } from "../app.actions";
 
 const initialState = {
     checkoutData: {
-        deliveryAddress: {
+        // deliveryAddress: {
             firstName: 'john',
             lastName: 'john',
             phone: 'john',
             address1: 'john',
             address2: 'john',
-            useAsBillingAddress: null
-        },
-        applianceDelivery: {
-            deliveryDate: null,
-            specialInstructions: 'john '
-        },
-        paymentMethod: {
+            useAsBillingAddress: true,
+        // },
+        // applianceDelivery: {
+            deliveryDate: '12/12/24',
+            specialInstructions: 'john',
+        // },
+        // paymentMethod: {
             paymentType: 'Credit Card',
             cardNumber: 'john',
-            expMonth: null,
-            expYear: null,
+            expMonth: '12/12/24',
+            expYear: '12/12/24',
             CVV: 'john',
-            defaultCreditCard: null,
-        }
+            defaultCreditCard: true,
+        // }
     },
     // checkoutData: {
     //     deliveryAddress: {
@@ -82,12 +84,25 @@ export const CheckoutReducers = createReducer(
 
     on(storeCheckoutData, (state, action) => {
         console.log('CheckoutReducers.checkoutData', action.checkoutData)
+
+        state = {
+            ...state,    
+            checkoutData: action.checkoutData
+          };
         
+          saveStateToLocalStorage(state);
+
         return {
-        ...state,    
-        checkoutData: action.checkoutData
+        ...state,            
         };
     }),
 
-  
+    on(restoreStateFromLocalStorage, (state, action) => {        
+        state.checkoutData = action.hdepot?.checkoutData || {}
+    
+        return {
+          ...state
+        }
+      }),
+
   );

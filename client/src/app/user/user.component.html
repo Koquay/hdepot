@@ -1,0 +1,209 @@
+
+
+<div
+  class="modal fade justify-content-center p-5"
+  id="userSignUpModal"
+  tabindex="-1"
+  aria-labelledby="userSignUpModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Sign Up</h4>
+        <button
+          class="btn-close"
+          type="button"
+          aria-label="Close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+          <div class="row d-sm-flex mb-4">
+            <div class="col-3">
+              <label class="col-form-label">First Name:</label>
+            </div>
+            <div class="col">
+              <input
+                [(ngModel)]="localUser.firstName"
+                #firstName="ngModel"
+                autofocus
+                required
+                type="text"
+                (keyup)="validateSignUpForm()"
+              />
+
+              <div
+                [hidden]="firstName.valid || firstName.pristine"
+                class="alert alert-danger"
+              >
+                First name is required
+              </div>
+            </div>
+          </div>
+          <div class="row d-sm-flex mb-4">
+            <div class="col-3">
+              <label class="col-form-label">Last Name:</label>
+            </div>
+            <div class="col">
+              <input
+                [(ngModel)]="localUser.lastName"
+                #lastName="ngModel"
+                required
+                type="text"
+                (keyup)="validateSignUpForm()"
+              />
+
+              <div
+                [hidden]="lastName.valid || lastName.pristine"
+                class="alert alert-danger"
+              >
+                Last name is required
+              </div>
+            </div>
+          </div>
+          <div class="row d-sm-flex mb-4">
+            <div class="col-3"><label class="col-form-label">Password</label></div>
+            <div class="col">
+              <input
+                [(ngModel)]="localUser.password"
+                #password="ngModel"
+                required
+                type="password"
+                (keyup)="validateSignUpForm()"
+              />
+
+              <div
+                [hidden]="password.valid || password.pristine"
+                class="alert alert-danger"
+              >
+                password is required
+              </div>
+            </div>
+          </div>
+          <div class="row d-sm-flex">
+            <div class="col-3"><label class="col-form-label">Email</label></div>
+            <div class="col">
+              <input
+                [(ngModel)]="localUser.email"
+                #email="ngModel"
+                required
+                type="text"
+                (keyup)="validateSignUpForm()"
+              />
+
+              <div
+                [hidden]="email.valid || email.pristine"
+                class="alert alert-danger"
+              >
+                Email is required
+              </div>
+            </div>
+          </div>
+          <div class="mt-4">
+            <span class="me-2">Have an account?</span> 
+            <a class="fw-bold" style="color: #61a0fd !important"
+            data-bs-toggle="modal" data-bs-target="#userSignInModal"
+            >Sign In</a>  
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button #closeSignUpModalBtn class="btn btn-light" type="button" data-bs-dismiss="modal">
+          Cancel</button
+        ><button id=signUpBtn class="btn btn-primary" type="button" (click)="signUp()"
+        [disabled]="!signUpFormValidated">
+          Sign Up
+        </button>
+      </div>
+    </div>
+  </div>  
+</div>
+
+
+<div
+  class="modal fade justify-content-center p-5"
+  id="userSignInModal"
+  tabindex="-1"
+  aria-labelledby="userSignInModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Sign In</h4>
+        <button
+          class="btn-close"
+          type="button"
+          aria-label="Close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+          <div class="row d-sm-flex mb-4">
+            <div class="col-3"><label class="col-form-label">Email</label></div>
+            <div class="col">
+              <input
+                [(ngModel)]="localUser.email"
+                #email="ngModel"
+                autofocus
+                required
+                type="text"
+                (keyup)="validateSignInForm()"
+              />
+
+              <div
+                [hidden]="email.valid || email.pristine"
+                class="alert alert-danger"
+              >
+                Email is required
+              </div>
+            </div>
+          </div>
+          <div class="row d-sm-flex">
+            <div class="col-3"><label class="col-form-label">Password</label></div>
+            <div class="col">
+              <input
+                [(ngModel)]="localUser.password"
+                #password="ngModel"
+                required
+                type="password"
+                (keyup)="validateSignInForm()"
+              />
+
+              <div
+                [hidden]="password.valid || password.pristine"
+                class="alert alert-danger"
+              >
+                password is required
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <span class="me-2">Don't have an account?</span> 
+            <a class="fw-bold" style="color: #61a0fd !important"
+            data-bs-toggle="modal" data-bs-target="#userSignUpModal"
+            >Sign Up</a>  
+          </div>
+          
+        <!-- </form> -->
+
+        <!-- <div class="mt-4">
+          <section>
+            <asl-google-signin-button type='icon' size='medium'></asl-google-signin-button>
+          </section>
+        </div> -->
+      </div>
+      <div class="modal-footer">
+        <button #closeSignInModalBtn class="btn btn-light" type="button" data-bs-dismiss="modal">
+          Cancel</button
+        ><button class="btn btn-primary" type="button" (click)="signIn()"
+        [disabled]="!signInFormValidated">
+          Sign In
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

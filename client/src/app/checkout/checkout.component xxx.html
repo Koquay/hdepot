@@ -1,10 +1,9 @@
 <div class="container">
-    <!-- <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()"> -->
-        <form>
+    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
         <section>
             <div class="row">
                 <div class="col col-12 col-lg-8">
-                    <!-- <div class="accordion" role="tablist" id="accordion-1">
+                    <div class="accordion" role="tablist" id="accordion-1">
                         <div class="accordion-item">
                             <h2 class="accordion-header" role="tab">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -14,7 +13,7 @@
                             </h2>
                             <div class="accordion-collapse collapse show item-1" role="tabpanel"
                                 data-bs-parent="#accordion-1">
-                                <div class="accordion-body"> -->
+                                <div class="accordion-body">
                                     <div class="row mb-4">
                                         <div class="col">
                                             <label class="form-label">First Name</label>
@@ -32,7 +31,7 @@
                                                 (change)="saveToDataStore()">
                                         </div>
                                     </div>
-                                    <div class="row mb-4">
+                                    <!-- <div class="row mb-4">
                                         <div class="col">
                                             <label class="form-label">Phone Number</label>
                                             <input class="form-control fw-bold" type="phone"
@@ -54,6 +53,7 @@
                                         <div class="col">
                                             <label class="form-label">Delivery Address Line 2 (Optional)</label>
                                             <input class="form-control fw-bold" type="text"
+                                                [(ngModel)]="checkoutData.deliveryAddress.address2"
                                                 formControlName="address2"
                                                 (change)="saveToDataStore()">
                                         </div>
@@ -68,16 +68,10 @@
                                                     Address</label>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
-
-
-
-                        <!-- </div> -->
-
-
-
+                        </div>
                         <!-- <div class="accordion-item">
                             <h2 class="accordion-header" role="tab">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -212,22 +206,18 @@
                                 </div>
                             </div>
                         </div> -->
-
-
-                    <!-- </div>
-                </div> -->
+                    </div>
+                </div>
                 <div class="col col-12 col-md-4">
                     <app-order-summary></app-order-summary>
 
                     <section class="mt-5">
                         <button class="btn btn-primary w-100 primary-button" 
-                            
+                            [disabled]="!checkoutForm.valid"
                             type="submit" style="font-size: 20px;font-weight: bold;">Place Order</button>
                     </section>
                 </div>
-            <!-- </div> -->
+            </div>
         </section>
     </form>
 </div>
-
-<!-- [disabled]="!checkoutForm.valid" -->

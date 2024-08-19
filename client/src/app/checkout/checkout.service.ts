@@ -7,7 +7,7 @@ import { tap } from 'rxjs';
   providedIn: 'root'
 })
 export class CheckoutService {
-  private url = '/api/order'
+  private url = '/api/orders'
 
   constructor(
     private httpClient: HttpClient) { }

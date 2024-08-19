@@ -1,42 +1,40 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { OrderSummaryComponent } from '../order/order-summary/order-summary.component';
-import { storeCheckoutData } from './checkout.actions';
-import { CheckoutService } from './checkout.service';
 import { ToastrService } from 'ngx-toastr';
+import { OrderSummaryComponent } from '../order/order-summary/order-summary.component';
+import { CommonModule } from '@angular/common';
+import { storeCheckoutData } from '../checkout/checkout.actions';
+import { CheckoutService } from '../checkout/checkout.service';
 
 @Component({
-  selector: 'app-checkout',
+  selector: 'app-checkout2',
   standalone: true,
   imports: [
-    FormsModule,
     ReactiveFormsModule,
     CommonModule,
     OrderSummaryComponent
   ],
-  templateUrl: './checkout.component.html',
-  styleUrl: './checkout.component.scss'
+  templateUrl: './checkout2.component.html',
+  styleUrl: './checkout2.component.scss'
 })
-export class CheckoutComponent {
+export class Checkout2Component {
+  checkoutForm: FormGroup = new FormGroup({});
   public cart;
   public checkoutData;
   public APPLIANCE_DELIVERY = 29.99;
   public expirationMonths;
   public expirationYears;
-  checkoutForm!: FormGroup;
 
   constructor(
     private store:Store<{cartReducers, checkoutReducers}>,
     private checkoutService:CheckoutService,
     private toastr: ToastrService,
-    private formBuilder: FormBuilder,
   ){}
 
   ngOnInit() {
-    // this.subscribeToRedux();    
-    // this.initCheckoutForm();
+    this.initCheckoutForm();
+    this.subscribeToRedux();        
 
   }
 
@@ -57,14 +55,14 @@ export class CheckoutComponent {
 
     checkoutReducers$.subscribe((checkoutReducers:any) => {
 
-      if(Object.keys(checkoutReducers.checkoutData).length > 0) {
+      if(Object.keys(checkoutReducers?.checkoutData).length > 0) {
         this.checkoutData = JSON.parse(JSON.stringify(checkoutReducers.checkoutData));
 
       
         this.checkoutForm = {...this.checkoutData}
 
-        console.log('this.checkoutData 2', this.checkoutData);
-      console.log('this.checkoutForm 2', this.checkoutForm);
+        // console.log('this.checkoutData 2', this.checkoutData);
+      console.log('ChecoutComponent.checkoutForm 2', this.checkoutForm);
       }
       
       
@@ -77,33 +75,29 @@ export class CheckoutComponent {
   }
 
   private initCheckoutForm = () => {
-    this.checkoutForm = this.formBuilder.group({
-      deliveryAddress: this.formBuilder.group({ 
-        firstName: [''],
-        lastName: [''],
-        phone: [''],
-        address1: [''],
-        address2: [''],
-        useAsBillingAddress: [''],
-      }),
-      applianceDelivery: this.formBuilder.group({ 
-          deliveryDate: [''],
-          specialInstructions: [''],
-      }),
-      paymentMethod: this.formBuilder.group({ 
-          paymentType: 'Credit Card',
-          cardNumber: [''],
-          expMonth: [''],
-          expYear: [''],
-          CVV: [''],
-          defaultCreditCard: [''],
-      })
+    this.checkoutForm = new FormGroup({
+      // deliveryAddress: new FormGroup({ 
+        firstName: new FormControl(''),
+        lastName: new FormControl(''),
+        phone: new FormControl(''),
+        address1: new FormControl(''),
+        address2: new FormControl(''),
+        useAsBillingAddress: new FormControl(''),
+      // }),
+      // applianceDelivery: new FormGroup({ 
+          deliveryDate: new FormControl(''),
+          specialInstructions: new FormControl(''),
+      // }),
+      // paymentMethod: new FormGroup({ 
+          paymentType: new FormControl(''),
+          cardNumber: new FormControl(''),
+          expMonth: new FormControl(''),
+          expYear: new FormControl(''),
+          CVV: new FormControl(''),
+          defaultCreditCard: new FormControl(''),
+      // })
     });
 
-    console.log('this.checkoutForm', this.checkoutForm.value);
-  }
-
-  public onSubmit = () => {
     console.log('this.checkoutForm', this.checkoutForm.value);
   }
 

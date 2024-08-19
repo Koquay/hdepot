@@ -8,7 +8,7 @@ import { StoreTopPickProducts } from './product.actions';
   providedIn: 'root'
 })
 export class ProductService {
-  private url = "/api/product/tabs";
+  private url = "/api/products/tabs";
 
   constructor(
     private httpClient: HttpClient,
