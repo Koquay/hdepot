@@ -1,0 +1,187 @@
+<div class="container">
+    <form [formGroup]="checkoutForm" (ngSubmit)="placeOrder()">
+        <section>
+            <div class="row">
+                <div class="col col-12 col-lg-8">
+                    <div formGroupName="deliveryAddress">
+                        <div class="row mb-4">
+                            <div class="col mb-4">
+                                <label class="form-label">First Name</label>
+                                <input id="firstName" class="form-control fw-bold" type="text" 
+                                    formControlName="firstName"
+                                    (change)="saveToDataStore()">
+
+                                <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"              
+                                    class="alert alert-danger">            
+                                    <div *ngIf="firstName.hasError('required')">
+                                        Name is required.            
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <div class="col mb-4">
+                                <label class="form-label">Last Name</label>
+                                <input id="lastName" class="form-control fw-bold" type="text" 
+                                    formControlName="lastName"
+                                    (change)="saveToDataStore()">
+                            </div>
+                    
+                    
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <label class="form-label">Phone Number</label>
+                                    <input id="phone" class="form-control fw-bold" type="phone" 
+                                        formControlName="phone"
+                                        (change)="saveToDataStore()">
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <label class="form-label">Delivery Address</label>
+                                    <input id="address1" class="form-control fw-bold" type="text" 
+                                        formControlName="address1"
+                                        (change)="saveToDataStore()">
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <label class="form-label">Delivery Address Line 2 (Optional)</label>
+                                    <input id="address2" class="form-control fw-bold" type="text" formControlName="address2"                                 
+                                        (change)="saveToDataStore()">
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <div class="form-check">
+                                        <input id="useAsBillingAddress" class="form-check-input" type="checkbox"
+                                            formControlName="useAsBillingAddress" (change)="saveToDataStore()">
+                                        <label class="form-check-label" for="formCheck-1">Use as Billing
+                                            Address</label>
+                                    </div>
+                                </div>
+                            </div>                    
+                        </div>
+                    </div>
+                
+                    <div formGroupName="applianceDelivery">
+                        <div class="row">
+                            <div class="col d-flex flex-column col-12 col-md-4">
+                                <img src="assets/img/deliverytruck.png"
+                                    style="width: 64px;">
+                                <div>
+                                    <small class="me-2">{{cart?.length}}</small>
+                                    <small>Item(s)</small>
+                                </div>
+                            </div>
+                            <div class="col" style="font-size: 14px;">
+                                <h6>Select Delivery Date</h6>
+                                <input id="deliveryDate" class="form-control fw-bold mb-2" type="date" 
+                                    formControlName="deliveryDate"
+                                    (change)="saveToDataStore()">
+                    
+                                <small class="fw-normal" style="font-size: 14.3px;">We'll call or text (617)
+                                    567-7112 with your projected 4-hour delivery window one business day
+                                    before your scheduled delivery date. You may also receive an optional
+                                    customer service satisfaction survey.</small>
+                                <p class="mt-4">Delivery Instructions:</p>
+                                <textarea id="specialInstructions" class="form-control" 
+                                    formControlName="specialInstructions"
+                                    (change)="saveToDataStore()"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div formGroupName="paymentMethod">
+                        <div class="row">
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" id="paymentType1" value="PayPal"
+                                            formControlName="paymentType" (change)="saveToDataStore()">
+                                        <label class="form-check-label" for="paymentType1" style="font-style: italic;">PayPal</label>
+                                    </div>
+                                    <div cl ass="form-check">
+                                        <input class="form-check-input" type="radio" id="paymentType2"
+                                            value="Credit Card" formControlName="paymentType" (change)="saveToDataStore()">
+                                        <label class="form-check-label" for="paymentType2">Credit Card</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <div class="input-group">
+                                        <span class="input-group-text ps-0">
+                                            <i class="fa fa-credit-card-alt" style="font-size: 25px;"></i>
+                                        </span>
+                                        <input id="cardNumber" class="form-control fw-bold" type="text" 
+                                            formControlName="cardNumber"
+                                            (change)="saveToDataStore()" placeholder="Enter credit card number">
+                                        <button class="btn btn-primary d-none" type="button">Button</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col col-12 col-lg-4">
+                                    <small>Expiration Month</small>
+                                    <select id="expMonth" class="form-select fw-bold" 
+                                        formControlName="expMonth" 
+                                        (change)="saveToDataStore()">
+                                        <optgroup label="Month">
+                                            <option *ngFor="let expMonth of expirationMonths" [value]="expMonth"> 
+                                                {{expMonth}}
+                                            </option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="col col-12 col-lg-4">
+                                    <small>Expiration Year</small>
+                                    <select id="expYear" 
+                                        class="form-select fw-bold" formControlName="expYear" 
+                                        (change)="saveToDataStore()">
+                                        <optgroup label="Year">
+                                            <option *ngFor="let expYear of expirationYears">
+                                                {{expYear}}
+                                            </option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="col col-12 col-lg-4">
+                                    <small>CVV (on back)</small>
+                                    <div class="input-group">
+                                        <span class="input-group-text ps-0">
+                                            <i class="fa fa-credit-card-alt" style="font-size: 25px;"></i>
+                                        </span>
+                                        <input id="CVV" class="form-control fw-bold" type="text" maxlength="3" formControlName="CVV"
+                                            (change)="saveToDataStore()" placeholder="Enter CVV">
+                    
+                                        <button class="btn btn-primary d-none" type="button">Button</button>
+                                    </div>
+                                </div>
+                                <div class="col col-12 mt-4">
+                                    <div class="form-check">                                 
+                                        <input class="form-check-input" type="checkbox" id="saveAsDefaultCard" 
+                                            formControlName="saveAsDefaultCard"
+                                            (change)="saveToDataStore()">
+                                        <label class="form-check-label" for="saveAsDefaultCard" style="font-size: 13px;">Save as my default credit
+                                            card</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col col-12 col-md-4">
+                    <app-order-summary></app-order-summary>
+
+                    <section class="mt-5">
+                        <button class="btn btn-primary w-100 primary-button" type="submit"
+                            (click)="placeOrder()"
+                            [disabled]="!checkoutForm.valid"
+                            style="font-size: 20px;font-weight: bold;">Place Order</button>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </form>
+</div>

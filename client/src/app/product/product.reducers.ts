@@ -2,6 +2,7 @@ import { createReducer, on } from "@ngrx/store";
 import { StoreSelectedProduct, StoreTopPickProducts } from "./product.actions";
 import { saveStateToLocalStorage } from "../shared/utils/localStorageUtils";
 import { restoreStateFromLocalStorage } from "../app.actions";
+
 const initialState = {
     topPickProducts: [],
     selectedProduct: {}

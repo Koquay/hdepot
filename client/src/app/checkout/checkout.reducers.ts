@@ -6,24 +6,24 @@ import { restoreStateFromLocalStorage } from "../app.actions";
 const initialState = {
     checkoutData: {
         deliveryAddress: {
-            firstName: 'john',
-            lastName: 'john',
-            phone: 'john',
-            address1: 'john',
-            address2: 'john',
-            useAsBillingAddress: true,
+            firstName: '',
+            lastName: '',
+            phone: '',
+            address1: '',
+            address2: '',
+            useAsBillingAddress: null,
         },
         applianceDelivery: {
-            deliveryDate: '12/12/24',
-            specialInstructions: 'john',
+            deliveryDate: null,
+            specialInstructions: '',
         },
         paymentMethod: {
             paymentType: 'Credit Card',
-            cardNumber: 'john',
-            expMonth: '12/12/24',
-            expYear: '12/12/24',
-            CVV: 'john',
-            defaultCreditCard: true,
+            cardNumber: '',
+            expMonth: null,
+            expYear: null,
+            CVV: '',
+            defaultCreditCard: null,
         }
     },
     // checkoutData: {
