@@ -21,7 +21,7 @@ import { CheckoutModel } from './checkout.model';
 })
 export class CheckoutComponent {
   public cart;
-  public checkoutData = new CheckoutModel();
+  public checkoutData;
   public APPLIANCE_DELIVERY = 29.99;
   public expirationMonths;
   public expirationYears;
