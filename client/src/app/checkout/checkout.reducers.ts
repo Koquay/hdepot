@@ -2,52 +2,33 @@ import { createReducer, on } from "@ngrx/store";
 import { storeCheckoutData } from "./checkout.actions";
 import { saveStateToLocalStorage } from "../shared/utils/localStorageUtils";
 import { restoreStateFromLocalStorage } from "../app.actions";
+import { CheckoutModel } from "./checkout.model";
 
 const initialState = {
+    // checkoutData:CheckoutModel = new CheckoutModel(),
+    
     checkoutData: {
         deliveryAddress: {
-            firstName: '',
-            lastName: '',
-            phone: '',
-            address1: '',
-            address2: '',
+            firstName: null,
+            lastName: null,
+            phone: null,
+            address1: null,
+            address2: null,
             useAsBillingAddress: null,
         },
         applianceDelivery: {
             deliveryDate: null,
-            specialInstructions: '',
+            specialInstructions: null,
         },
         paymentMethod: {
             paymentType: 'Credit Card',
-            cardNumber: '',
+            cardNumber: null,
             expMonth: null,
             expYear: null,
-            CVV: '',
+            CVV: null,
             defaultCreditCard: null,
         }
     },
-    // checkoutData: {
-    //     deliveryAddress: {
-    //         firstName: null,
-    //         lastName: null,
-    //         phone: null,
-    //         address1: null,
-    //         address2: null,
-    //         useAsBillingAddress: null
-    //     },
-    //     applianceDelivery: {
-    //         deliveryDate: null,
-    //         specialInstructions: null
-    //     },
-    //     paymentMethod: {
-    //         paymentType: 'Credit Card',
-    //         cardNumber: null,
-    //         expMonth: null,
-    //         expYear: null,
-    //         CVV: null,
-    //         defaultCreditCard: null,
-    //     }
-    // },
 
     expirationMonths: [
         "January",
@@ -97,9 +78,16 @@ export const CheckoutReducers = createReducer(
         };
     }),
 
-    on(restoreStateFromLocalStorage, (state, action) => {        
-        state.checkoutData = action.hdepot?.checkoutData || {}
-    
+    on(restoreStateFromLocalStorage, (state, action) => {  
+        
+        if(action.hdepot?.checkoutData) {
+            state.checkoutData = action.hdepot?.checkoutData
+            console.log('action.hdepot?.checkoutData', action.hdepot?.checkoutData)
+        } else {
+            state = initialState;
+            console.log('state.checkoutData', state.checkoutData)
+        }
+            
         return {
           ...state
         }

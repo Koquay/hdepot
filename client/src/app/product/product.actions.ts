@@ -9,3 +9,8 @@ export const StoreSelectedProduct = createAction(
   '[Store Selected Product] Store Selected Product',
   props<{ productId:any }>()
 );
+
+export const StoreBreadcrumbProduct = createAction(
+  '[StoreBreadcrumbProduct] StoreBreadcrumbProduct',
+  props<{ selectedProduct }>()
+);

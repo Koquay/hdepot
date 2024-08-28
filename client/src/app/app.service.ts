@@ -15,9 +15,9 @@ export class AppService {
 
   public restoreStateFromLocalStorage = () => {
     const hdepot = JSON.parse(localStorage.getItem("hdepot"));
-    if(hdepot) {
+    // if(hdepot) {
       this.store.dispatch(restoreStateFromLocalStorage({hdepot}));  
-    }
+    // }
       
   }
 }

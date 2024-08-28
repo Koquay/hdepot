@@ -29,7 +29,15 @@ export const CartReducers = createReducer(
     }),
 
     on(restoreStateFromLocalStorage, (state, action) => {        
-        state.cart = action.hdepot.cart || []
+        // state.cart = action.hdepot.cart || []
+
+        if(action.hdepot?.cart) {
+            state.cart = action.hdepot?.cart
+            console.log('action.hdepot?.cart', action.hdepot?.cart)
+        } else {
+            state = initialState;
+            console.log('state.cart', state.cart)
+        }
     
         return {
           ...state

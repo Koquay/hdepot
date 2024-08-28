@@ -80,6 +80,6 @@ export class SelectedProductComponent {
       size: this.productSize
     }
     this.store.dispatch(addItemToCart({ item }));
-    this.toastr.success('Item added to cart.', '');
+    this.toastr.success('Item successfully added to cart.', '');
   }
 }

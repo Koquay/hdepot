@@ -46,7 +46,15 @@ export const UserReducers = createReducer(
   }),
 
   on(restoreStateFromLocalStorage, (state, action) => {        
-    state.user = action.hdepot.user
+    // state.user = action.hdepot.user
+
+    if(action.hdepot?.user) {
+      state.user = action.hdepot?.user
+      console.log('action.hdepot?.user', action.hdepot?.user)
+  } else {
+      state = initialState;
+      console.log('state.user', state.user)
+  }
 
     return {
       ...state
