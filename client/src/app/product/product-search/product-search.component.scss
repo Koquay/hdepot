@@ -1,13 +1,10 @@
 .search-button {
     color: white;
+    border-radius: 0px;
 }
 
 .searchbox {
     width: 20rem !important;
-    
-    // @media(min-width: 768px) {
-    //     width: 20rem !important;
-    // }
     
     @media(min-width: 992px) {
         width: 30rem!important;

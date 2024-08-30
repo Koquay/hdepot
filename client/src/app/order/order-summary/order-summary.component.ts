@@ -27,11 +27,11 @@ export class OrderSummaryComponent {
 
   private subscribeToRedux = () => {
 
-    const productReducers$ = this.store.select((state) => {
+    const cartReducers$ = this.store.select((state) => {
       return state.cartReducers;
     });
 
-    productReducers$.subscribe((cartReducers:any) => {
+    cartReducers$.subscribe((cartReducers:any) => {
       this.cart = cartReducers.cart;
       console.log('CartComponent.cart', this.cart)
     });

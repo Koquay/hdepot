@@ -1,0 +1,26 @@
+<div
+  id="search-column">
+  <!-- class="col d-flex flex-column align-items-end col-md-3 mb-4"> -->
+  <div class="input-group">
+    <div class="input-group-prepend"></div>
+    <input class="form-control searchbox" type="text" [(ngModel)]="searchField" 
+        placeholder="Search products..."/>
+    <div class="input-group-append">
+      <button class="btn search-button primary-bg-color " type="button">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+  <ol
+    class="list-group d-block d-none d-lg-block"
+    style="z-index: 10"
+    *ngIf="showSearchResult"
+  >
+    <li key="{item}" class="py-1 px-2 list-group-item" *ngFor="let product of searchResults">
+      <!-- {{product | json}} -->
+      <a [routerLink]="['/selectedProduct', product._id]" (click)="setSelectedProduct(product._id)">{{
+        product.description
+      }}</a>
+    </li>
+  </ol>
+</div>

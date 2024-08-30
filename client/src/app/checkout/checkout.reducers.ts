@@ -2,10 +2,8 @@ import { createReducer, on } from "@ngrx/store";
 import { storeCheckoutData } from "./checkout.actions";
 import { saveStateToLocalStorage } from "../shared/utils/localStorageUtils";
 import { restoreStateFromLocalStorage } from "../app.actions";
-import { CheckoutModel } from "./checkout.model";
 
 const initialState = {
-    // checkoutData:CheckoutModel = new CheckoutModel(),
     
     checkoutData: {
         deliveryAddress: {

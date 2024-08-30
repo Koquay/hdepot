@@ -58,7 +58,7 @@
                 <section class="mt-5">
                     <ul class="px-3">
                         <li *ngFor="let feature of selectedProduct.features">{{feature}}</li>
-                        <li><a href="#">View More Details</a></li>
+                        <li><a>View More Details</a></li>
                     </ul>
                 </section>
                 <section class="mt-5">
@@ -67,7 +67,8 @@
                         <small><strong>{{productColor}}</strong></small>
                     </div>
                     <div class="me-2">
-                        <a *ngFor="let color of colorImgs" (click)="getProductByColor(color)">
+                        <a *ngFor="let color of colorImgs" 
+                            (click)="getProductByColor(color)">
                             <img class="highlight-border-2" src="assets/img/{{color.img}}"
                             [ngClass]="{
                                 'highlight-border-2': productColor === color.color}">

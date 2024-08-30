@@ -1,3 +1,12 @@
 .search-button {
   color: white;
 }
+
+.searchbox {
+  width: 20rem !important;
+}
+@media (min-width: 992px) {
+  .searchbox {
+    width: 30rem !important;
+  }
+}
