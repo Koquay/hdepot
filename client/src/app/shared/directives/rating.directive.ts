@@ -18,13 +18,11 @@ export class RatingDirective {
     const nativeElement: HTMLElement = this.el.nativeElement;
     let clonedNode;
 
-    // Array.from(nativeElement.childNodes).forEach(node => {
-    //   clonedNode = node.cloneNode(true);
-    //   console.log('clonedNode', clonedNode)
-    //   Array.from(clonedNode.childNodes).forEach(childNode => {        
-    //     this.renderer.removeChild(clonedNode, childNode);
-    //   })             
-    // })
+    Array.from(nativeElement.childNodes).forEach(node => {
+      Array.from(node.childNodes).forEach(childNode => {        
+        this.renderer.removeChild(node, childNode);
+      })             
+    })
         
 
     clonedNode = nativeElement.childNodes[0].cloneNode(true);          

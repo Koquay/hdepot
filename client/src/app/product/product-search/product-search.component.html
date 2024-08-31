@@ -12,12 +12,13 @@
     </div>
   </div>
   <ol
-    class="list-group d-block d-none d-lg-block"
+    class="list-group d-block"
+    style=" position: fixed; top: 0; left: 0;"
     style="z-index: 10"
     *ngIf="showSearchResult"
   >
-    <li key="{item}" class="py-1 px-2 list-group-item" *ngFor="let product of searchResults">
-      <!-- {{product | json}} -->
+    <li key="{item}" class="py-1 px-2 list-group-item" 
+      *ngFor="let product of searchResults">
       <a [routerLink]="['/selectedProduct', product._id]" (click)="setSelectedProduct(product._id)">{{
         product.description
       }}</a>

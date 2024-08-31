@@ -8,6 +8,7 @@ import { RatingDirective } from '../../shared/directives/rating.directive';
 import { DiscountPricePipe } from '../../shared/pipes/discount-price';
 import { addItemToCart } from '../../cart/cart.actions';
 import { ToastrService } from 'ngx-toastr';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-selected-product',
@@ -50,9 +51,9 @@ export class SelectedProductComponent {
       this.selectedProduct = productReducers.selectedProduct;
       console.log('selectedProduct', this.selectedProduct)
       this.currentGalleryImg = this.selectedProduct?.images[0]
-      this.productColor = this.selectedProduct.colorFinish.find(color => color.productId === this.selectedProduct._id).color
+      this.productColor = this.selectedProduct?.colorFinish.find(color => color.productId === this.selectedProduct._id).color
 
-      this.colorImgs = this.selectedProduct.colorFinish.filter(color => color.img)
+      this.colorImgs = this.selectedProduct?.colorFinish.filter(color => color.img)
       console.log('colorImgs', this.colorImgs)
 
       this.productSize = this.selectedProduct.sizes[0];
@@ -79,7 +80,15 @@ export class SelectedProductComponent {
       color:this.productColor, 
       size: this.productSize
     }
-    this.store.dispatch(addItemToCart({ item }));
-    this.toastr.success('Item successfully added to cart.', '');
+    
+    try {
+      this.store.dispatch(addItemToCart({ item }))
+    } catch (e) {
+      this.toastr.success('There was a problem adding your item to cart.', '');
+      throw e;
+    } finally {
+      this.toastr.success('Item successfully added to cart.', '');
+    }
+    
   }
 }
