@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ProductSearchComponent } from '../../../product/product-search/product-search.component';
+import { SavingsComponent } from "../../../home/savings/savings.component";
 
 @Component({
   selector: 'app-header',
@@ -12,9 +13,9 @@ import { ProductSearchComponent } from '../../../product/product-search/product-
     RouterLink,
     CommonModule,
     FormsModule,
-    ProductSearchComponent
-    
-  ],
+    ProductSearchComponent,
+    SavingsComponent,
+],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

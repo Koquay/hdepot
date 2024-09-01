@@ -277,11 +277,4 @@ const initialState = {
 export const HomeReducers = createReducer(
     initialState,
 
-    // on(InitHome, (state, action) => {
-    //     console.log('xxxxxxxxxxxxxxxxxxx')
-    //     return {
-    //     ...state,    
-    //     };
-    // }),
-  
   );

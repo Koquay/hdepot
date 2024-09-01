@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { HomeService } from '../home.service';
-import { ProductService } from '../../product/product.service';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { ShortenAddEllipsisPipe } from '../../shared/pipes/shorten-add-ellipsis.pipe';
 import { DiscountPricePipe } from '../../shared/pipes/discount-price';
@@ -50,15 +48,14 @@ export class TopPicksComponent {
 
   constructor(
     private store: Store<{ homeReducers:any; productReducers:any}>,
-    private productService:ProductService
   ){}
 
   ngOnInit() {
     this.topPickType = 'All'
-    this.subscribeToReduxStores();    
+    this.subscribeToRedux();    
   }
 
-  private subscribeToReduxStores = () => {
+  private subscribeToRedux = () => {
     const homeReducers$ = this.store.select((state) => {
       return state.homeReducers;
     });

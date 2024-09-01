@@ -14,3 +14,4 @@ export const StoreBreadcrumbProduct = createAction(
   '[StoreBreadcrumbProduct] StoreBreadcrumbProduct',
   props<{ selectedProduct }>()
 );
+

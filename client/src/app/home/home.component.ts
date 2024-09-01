@@ -22,10 +22,5 @@ import { PopularCategoriesComponent } from './popular-categories/popular-categor
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-
-  constructor(){}
-
-  ngOnInit() {}
-
-
+  
 }

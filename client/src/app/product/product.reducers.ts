@@ -6,7 +6,7 @@ import { restoreStateFromLocalStorage } from "../app.actions";
 const initialState = {
     topPickProducts: [],
     selectedProduct: {},
-    products: []
+    products: [],
 }
 
 export const ProductReducers = createReducer(
@@ -53,10 +53,7 @@ export const ProductReducers = createReducer(
     };
     }),
 
-    on(restoreStateFromLocalStorage, (state, action) => {        
-        // state.topPickProducts = action.hdepot.topPickProducts
-        // state.selectedProduct = action.hdepot.selectedProduct
-
+    on(restoreStateFromLocalStorage, (state, action) => {
         if(action.hdepot?.topPickProducts) {
           state.topPickProducts = action.hdepot?.topPickProducts
           console.log('action.hdepot?.topPickProducts', action.hdepot?.topPickProducts)

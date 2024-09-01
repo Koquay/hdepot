@@ -10,8 +10,6 @@ export const routes: Routes = [
     { path: 'selectedProduct/:productId', component: SelectedProductComponent },
     { path: 'cart', component: CartComponent, canActivate: [CartGuard] },    
     { path: 'checkout', component: CheckoutComponent},
-    
-    // { path: 'customizer/:productId', component: CustomizerComponent },
       {
         path: '',
         pathMatch: 'prefix',

@@ -23,8 +23,6 @@ export class ProductSearchComponent {
   public searchItems;
   public searchResults;
   public showSearchResult = false;
-  public marquee;
-  public marqueeContents;
   public searchSubject = new Subject();
   public searchField;
 
@@ -41,7 +39,7 @@ export class ProductSearchComponent {
     this.searchSubject.pipe(
       distinctUntilChanged(),
       debounceTime(400)
-    ).subscribe(value => {
+    ).subscribe(value => {      
 
       this.search(value)
     });
@@ -62,15 +60,20 @@ export class ProductSearchComponent {
 
   public setSelectedProduct = (productId) => {      
     this.store.dispatch(StoreSelectedProduct({productId}))
-    this.clearSearchbox();
+    // this.clearSearchbox();
+    this.searchResults = [];
   }
 
   clearSearchbox = () => {
     this.searchResults = [];
+    this.searchField = null;
+    this.searchSubject.next(this.searchField);
   }
 
   ngDoCheck() {
     this.searchSubject.next(this.searchField);
   }
+
+
 
 }
