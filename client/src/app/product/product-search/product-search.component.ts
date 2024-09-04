@@ -60,7 +60,6 @@ export class ProductSearchComponent {
 
   public setSelectedProduct = (productId) => {      
     this.store.dispatch(StoreSelectedProduct({productId}))
-    // this.clearSearchbox();
     this.searchResults = [];
   }
 

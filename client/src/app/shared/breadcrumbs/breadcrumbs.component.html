@@ -11,7 +11,7 @@
               class=""
               (click)="navigateToUrl(breadcrumb?.url)"
               [ngClass]="{
-                'primary-blue fw-bold': idx + 1 === breadcrumbs?.length
+                'blue fw-bold': idx + 1 === breadcrumbs?.length
               }"
               style="font-size: 0.9rem"
             >
@@ -19,26 +19,12 @@
             </a>
           </li>
 
-          <li *ngIf="breadcrumbs.length > 1" (click)="clearBreadcrumbs()">
-            <!-- <div class="d-flex align-items-center ms-2"> -->
+          <li *ngIf="breadcrumbs.length > 2" (click)="clearBreadcrumbs()">
               <i class="fa fa-close ms-3" style="font-size: 1.5rem; color: red"></i>
-              <!-- <small class="ms-1"
-              > Clear breadcrumbs</small
-            > -->
-            <!-- </div> -->
           </li>
         </ol>
       </nav>
     </div>
-
-    <!-- <a *ngIf="breadcrumbs.length > 1" (click)="clearBreadcrumbs()">
-      <div class="d-flex align-items-center">
-        <i class="fa fa-close" style="font-size: 1.5rem; color: red"></i>
-        <small class="ms-1"
-        > Clear breadcrumbs</small
-      >
-      </div>
-    </a> -->
     
   </div>
   

@@ -25,7 +25,6 @@ export class ProductSearchService {
     return this.httpClient.get('/api/products/search/1', {params}).pipe(
       tap(searchResults => {
         console.log('searchResults', searchResults)
-        // this.store.dispatch(StoreSearchResults({searchResults}))
       })
     )
   };

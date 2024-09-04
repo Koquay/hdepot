@@ -2,13 +2,11 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StoreSelectedProduct } from '../product.actions';
 import { Store } from '@ngrx/store';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RatingDirective } from '../../shared/directives/rating.directive';
 import { DiscountPricePipe } from '../../shared/pipes/discount-price';
 import { addItemToCart } from '../../cart/cart.actions';
 import { ToastrService } from 'ngx-toastr';
-import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-selected-product',
@@ -35,13 +33,13 @@ export class SelectedProductComponent {
   ){}
   
   ngOnInit() {
-    this.subscribeToReduxStores();
+    this.subscribeToRedux();
     const productId = this.activatedRoute.snapshot.paramMap.get('productId')
     console.log('selectedProduct', productId)
     this.store.dispatch(StoreSelectedProduct({ productId }));
   }
 
-  private subscribeToReduxStores = () => {
+  private subscribeToRedux = () => {
 
     const productReducers$ = this.store.select((state) => {
       return state.productReducers;

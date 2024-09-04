@@ -109,5 +109,7 @@ export class BreadcrumbsComponent implements OnInit {
 
   public clearBreadcrumbs = () => {
     this.breadcrumbs = [this.breadcrumbs[this.breadcrumbs.length - 1]]
+    let breadcrumb = {label:'Home', url:'/home' }
+    this.breadcrumbs.unshift(breadcrumb)
   }
 }

@@ -25,12 +25,14 @@
     style=" position: absolute; top: 10; left: 0; z-index: 10;"
     *ngIf="showSearchResult"
   >
-    <li key="{item}" class="py-1 px-2 list-group-item list-group-item-warning" 
+    <li key="{item}" 
+      [routerLink]="['/selectedProduct', product._id]" (click)="setSelectedProduct(product._id)"
+      class="py-1 px-2 list-group-item list-group-item-warning" 
       style="border: 1px solid"
       *ngFor="let product of searchResults">
-      <a [routerLink]="['/selectedProduct', product._id]" (click)="setSelectedProduct(product._id)">{{
+      <small>{{
         product.description
-      }}</a>
+      }}</small>
     </li>
   </ol>
 </div>

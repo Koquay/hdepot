@@ -58,10 +58,10 @@ export class TopPickDataComponent {
   ){}
 
   ngOnInit() {
-    this.subscribeToReduxStores();    
+    this.subscribeToRedux();    
   }
 
-  private subscribeToReduxStores = () => {
+  private subscribeToRedux = () => {
 
     const productReducers$ = this.store.select((state) => {
       return state.productReducers;

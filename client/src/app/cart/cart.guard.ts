@@ -14,7 +14,6 @@ export class CartGuard implements CanActivate {
 
   canActivate(): Observable<boolean> | boolean {
     if (this.isItemInCart()) {
-      // this.toastr.warning('Okay to view cart', '');
       return true;
     }
     else {

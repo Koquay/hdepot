@@ -41,10 +41,10 @@ export class HomeHeroCarouselComponent {
   ){}
 
   ngOnInit() {
-    this.subscribeToReduxStores();
+    this.subscribeToRedux();
   }
 
-  private subscribeToReduxStores = () => {
+  private subscribeToRedux = () => {
     const homeReducers$ = this.store.select((state) => {
       return state.homeReducers;
     });
