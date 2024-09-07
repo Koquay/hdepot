@@ -1,7 +1,9 @@
 <div style="position: relative;"
   id="search-column">
   <div class="input-group d-flex align-items-center">
-    <div class="input-group-prepend">
+    <div class="input-group-prepend me-2">
+      <i *ngIf="showSearchResult" (click)="clearSearchbox()"
+        class="fa fa-close" style="color: red; font-size: 1.4rem;"></i>
     </div>
     <input class="form-control searchbox" type="text" [(ngModel)]="searchField" 
         placeholder="Search products..."/>
@@ -12,17 +14,17 @@
       </button>
     </div>
 
-    <div class="input-group-append ms-1">
+    <!-- <div class="input-group-append ms-1">
       <button *ngIf="showSearchResult"  class="btn search-button primary-bg-color " 
         (click)="clearSearchbox()" type="button">
         <i class="fa fa-close" style="color: white"></i>
       </button>
-    </div>
+    </div> -->
     
   </div>
   <ol
     class="list-group d-block"
-    style=" position: absolute; top: 10; left: 0; z-index: 10;"
+    style=" position: absolute; top: 10; left: 0; z-index: 10; height: 500px; overflow-y: scroll;"
     *ngIf="showSearchResult"
   >
     <li key="{item}" 
@@ -30,7 +32,7 @@
       class="py-1 px-2 list-group-item list-group-item-warning" 
       style="border: 1px solid"
       *ngFor="let product of searchResults">
-      <small>{{
+      <small style="cursor: pointer;">{{
         product.description
       }}</small>
     </li>

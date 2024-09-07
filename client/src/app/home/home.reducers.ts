@@ -13,49 +13,49 @@ const initialState = {
         },
         {
             type: "Refrigerators",
-            href: "#tab-2",
+            href: "#tab-1",
             active: false
         },
         {
             type: "Ranges",
-            href: "#tab-3",
+            href: "#tab-1",
             active: false
         },
-        {
-            type: "Washers & Dryers",
-            href: "#tab-4",
-            active: false
-        },
-        {
-            type: "Patio Furniture",
-            href: "#tab-5",
-            active: false
-        },
-        {
-            type: "Grills",
-            href: "#tab-6",
-            active: false
-        },
-        {
-            type: "Bath",
-            href: "#tab-7",
-            active: false
-        },
-        {
-            type: "Lawn & Garden",
-            href: "#tab-8",
-            active: false
-        },
-        {
-            type: "Storage & Organization",
-            href: "#tab-9",
-            active: false
-        },
-        {
-            type: "Furniture",
-            href: "#tab-10",
-            active: false
-        },
+        // {
+        //     type: "Washers & Dryers",
+        //     href: "#tab-1",
+        //     active: false
+        // },
+        // {
+        //     type: "Patio Furniture",
+        //     href: "#tab-1",
+        //     active: false
+        // },
+        // {
+        //     type: "Grills",
+        //     href: "#tab-1",
+        //     active: false
+        // },
+        // {
+        //     type: "Bath",
+        //     href: "#tab-1",
+        //     active: false
+        // },
+        // {
+        //     type: "Lawn & Garden",
+        //     href: "#tab-1",
+        //     active: false
+        // },
+        // {
+        //     type: "Storage & Organization",
+        //     href: "#tab-1",
+        //     active: false
+        // },
+        // {
+        //     type: "Furniture",
+        //     href: "#tab-10",
+        //     active: false
+        // },
         
     ],
     

@@ -26,19 +26,6 @@ export class CheckoutComponent {
   public expirationMonths;
   public expirationYears;
 
-  // public validation = {
-  //   firstName: null,
-  //   lastName: null,
-  //   phone: null,
-  //   address1: null,
-  //   deliveryDate: null,
-
-  //   cardNumber: null,
-  //   expMonth: null,
-  //   expYear: null,
-  //   CVV: null,
-  // };
-
   constructor(
     private store:Store<{cartReducers, checkoutReducers}>,
     private checkoutService:CheckoutService,
